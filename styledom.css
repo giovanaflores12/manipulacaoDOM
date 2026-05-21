@@ -1,0 +1,83 @@
+body {
+    font-family: "Gill Sans", sans-serif;
+    margin: 0;
+    padding: 40px;
+    background: linear-gradient(rgba(96, 53, 175, 0.603), rgb(92, 8, 172), rgb(42, 5, 85));
+    color: whitesmoke;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+section {
+    width: 50%;
+    margin-bottom: 30px;
+    padding: 10px;
+    border-radius: 20px;
+    background: rgb(46, 7, 85);
+    box-shadow: 0 0 40px rgb(48, 39, 58);
+    backdrop-filter: blur(20px);
+    text-align: center;
+}
+
+h2{
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 7px;
+    border-radius: 10px;
+    border: none;
+    background: rgba(173, 114, 240, 0.644);
+    color: rgba(255, 255, 255, 0.945);
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover{
+    transform: scale(1.2);
+}
+
+.numero{
+    height: 30px;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+#nomecontainer ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    list-style: square;
+}
+
+#nomecontainer li{
+    padding: 15px;
+}
+
+.caixa-colorida {
+    width: 100px;      
+    height: 100px;     
+    margin: 10px;      
+    display: inline-block; 
+    border-radius: 8px; 
+}
+
+.galeria{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+img{
+    width: 200px;
+    border-radius: 20px;
+    border: 0 0 20px solid white;
+}

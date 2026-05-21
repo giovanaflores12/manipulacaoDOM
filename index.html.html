@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+    </style>
+    <meta charset="UTF-8">
+    <title>Manipulação DOM</title>
+    <link rel="stylesheet" href="styledom.css">
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("gerar").addEventListener("click", function(){
+                var container = document.getElementById("container");
+                container.innerHTML = "";
+                var numeros = [1,2,3,4,5,6,7,8,9,10];
+                numeros.sort(function() {
+                    return Math.random() - 0.5;
+                });
+
+                for (var i=0; i<10; i++) {
+                    var novaDiv = document.createElement("div");
+                    novaDiv.innerText = numeros[i];
+                    novaDiv.classList.add("numero");
+
+                    container.appendChild(novaDiv);
+                }
+            });
+        document.getElementById("limpar").addEventListener("click", function() {
+        document.getElementById("container").innerHTML = "";
+            });
+        
+        document.getElementById("gerarnome").addEventListener("click", function() {
+            var nomes = ["Janaina", "João", "Samara", "José", "Maethe", "Alan"];
+            criarlista(nomes);
+        });
+        document.getElementById("limparnome").addEventListener("click", function() {
+            document.getElementById("nomecontainer").innerHTML ="";
+        });
+        });
+
+        function criarlista(array) {
+            var nomecontainer = document.getElementById("nomecontainer");
+            nomecontainer.innerHTML = "";
+            var lista = document.createElement("ul");
+
+            for (var i = 0; i < array.length; i++) {
+                var item = document.createElement("li");
+                item.innerText = array[i];
+                lista.appendChild(item);
+            }
+        nomecontainer.appendChild(lista);
+        }
+
+        document.addEventListener("DOMContentLoaded", function (){
+            document.getElementById("gerarcaixas")
+                .addEventListener("click", gerarcaixascoloridas);
+            document.getElementById("limparcaixascoloridas")
+                .addEventListener("click", limparcaixascoloridas);
+        });
+
+        function gerarcaixascoloridas() {
+            var container = document.getElementById("containercaixas");
+            container.innerHTML = "";
+
+            for (var i = 0; i < 5; i++) {
+                var novaDiv = document.createElement("div");
+                novaDiv.classList.add("caixa-colorida");
+                novaDiv.style.backgroundColor = getrandomcolor();
+                container.appendChild(novaDiv);
+            }
+        }
+
+        function getrandomcolor() {
+            var letters = '0123456789ABCDEF';
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        function limparcaixascoloridas() {
+            document.getElementById("containercaixas").innerHTML = "";
+        }
+
+        function inseririmagem(url) {
+            var galeria = document.getElementById("galeria");
+            var imagem = document.createElement("img");
+            imagem.src = url;
+            galeria.appendChild(imagem);
+        }
+
+        function limpargaleria() {
+            document.getElementById("galeria").innerHTML = "";
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("limparimagem").addEventListener("click", limpargaleria);
+        });
+
+        function gerarparagrafos(qtd) {
+            var container = document.getElementById("containertexto");
+            container.innerHTML = "";
+            qtd = parseInt(qtd);
+
+            if (isNaN(qtd) || qtd <= 0) return;
+            for (var i = 0; i < qtd && i < 10; i++) {
+                var p = document.createElement("p");
+                p.innerText = "Parágrafo criado dinamicamente";
+                container.appendChild(p);
+            }
+        }
+        function limparparagrafos() {
+            document.getElementById("containertexto").innerHTML = "";
+        }
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("limparparagrafos").addEventListener("click", limparparagrafos);
+        });
+        document.addEventListener("DOMContentLoaded", function(){
+            document.getElementById("gerarparagrafos").addEventListener("click", function() {
+                var qtd = document.getElementById("quantidade").value;
+                gerarparagrafos(qtd);
+            });
+        });
+
+        function criarformulariologin() {
+            if (document.getElementById("formslogin")) return;
+            var area = document.getElementById("arealogin");
+            var form = document.createElement("form");
+            form.id = "formslogin";
+            form.classList.add("formslogin");
+
+            var inputusuario = document.createElement("input");
+            inputusuario.type = "text";
+            inputusuario.placeholder = "usuario";
+            
+            var inputsenha = document.createElement("input");
+            inputsenha.type = "password";
+            inputsenha.placeholder = "senha";
+
+            var botao = document.createElement("button");
+            botao.type = "submit";
+            botao.innerText = "Entrar";
+
+            form.appendChild(inputusuario);
+            form.appendChild(inputsenha);
+            form.appendChild(botao);
+            area.appendChild(form);
+            }
+        function removerformulario() {
+            var form = document.getElementById("formslogin");
+            if (form) {
+                form.remove();
+            }
+        }
+        
+    </script>
+</head>
+<body>
+    <section>
+    <h2>Gerador de Números Aleatórios</h2>
+    <button id="gerar">Gerar Números</button>
+    
+    <div id="container"> </div>
+    
+    <button id="limpar">Limpar</button>
+    </section>
+    <br><br><br>
+    <section>
+    <h2>Gerador de Nomes</h2>
+       
+    <button id="gerarnome">Gerar Nomes</button>
+       
+    <div id="nomecontainer"></div>
+       
+    <button id="limparnome">Limpar Nomes</button>
+    </section>
+    <br><br><br>
+
+    <section>
+    <h2>Gerador de caixas coloridas</h2>
+    <button id="gerarcaixas">Gerar caixas</button>
+
+    <div id="containercaixas"></div>
+
+    <button id="limparcaixascoloridas">Limpar as caixas</button>
+    </section>
+    <br><br><br>
+    <section>
+    <h2>Gerar imagens</h2>
+    <button onclick="inseririmagem('https://i.pinimg.com/736x/a3/44/6b/a3446b009ccedbbddbbc1d95118ce469.jpg')">Inserir imagem</button>
+
+    <div id="galeria"></div>
+
+    <button id="limparimagem">Limpar imagens</button>
+    </section>
+    <br><br><br>
+    <section>
+    <h2>Gerador de parágrafos</h2>
+
+    <div id="containertexto"></div>
+    
+    <input type="number" id="quantidade" placeholder="Parágrafos (max10)">
+    <button id="gerarparagrafos">Gerar parágrafo</button>
+    <button id="limparparagrafos">Limpar paragráfo</button>
+    </section>
+    <br><br><br>
+    <section>
+    <h2>Formulário de login</h2>
+
+    <div id="arealogin"></div>
+    
+    <button onclick="criarformulariologin()">Criar o formulario</button>
+    <button onclick="document.getElementById('formslogin').remove()">Remover formulário</button>
+    </section>
+</body>
+</html>
